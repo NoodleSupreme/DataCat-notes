@@ -4,7 +4,7 @@
   height: 450px;
   text-align: center;
 }
-.container {
+.Items {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
