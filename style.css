@@ -3,6 +3,7 @@
   width: 350px;
   height: 450px;
   text-align: center;
+  margin-bottom: 5rem;
 }
 .Items {
   display: flex;

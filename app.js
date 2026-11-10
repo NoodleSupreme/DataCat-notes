@@ -1,4 +1,4 @@
-cart = {};
+cart = [];
 
 balatro = [
   { name: "Jimbo", type: "Joker", cost: 2 },
@@ -22,22 +22,14 @@ balatro = [
   { name: "Ectoplasm", type: "Spectral", cost: 6 },
   { name: "Cryptid", type: "Spectral", cost: 3 },
 ];
-/*
-function addtocart(item) {
-  for (i = 0; i <= balatro.length; i++)
-    if (item === balatro[i].name) {
-      cart.push(item);
-    }
+
+function addtocart(selecteditem) {
+  cart.push(selecteditem);
+  console.log(cart);
 }
-
-addtocart("DNA");
+addtocart("Blueprint");
 
 /*
-balatro.forEach(function(item) {
-console.log(item.name + " $" + item.cost);
-})
-*/
-
 function inject(item) {
   const container = document.querySelector(".container");
   container.insertAdjacentHTML(
@@ -56,3 +48,4 @@ buttons.forEach((button) =>
     console.log(event.target.closest(".card").getAttribute("data-item"));
   }),
 );
+*/
