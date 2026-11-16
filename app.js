@@ -60,8 +60,8 @@ function inject() {
       "beforeend",
       `<div class="card">
         <h2 class="card-header">${balatro.name}</h2>
-        <img src="${balatro.img}" alt="buffoon">
-        <p>${balatro.cost}</p>
+         <p class="cost">$${balatro.cost}</p>
+        <img src="${balatro.img}" style="width: 50%; height: auto;" alt="buffoon">
       </div> `,
     );
   });
