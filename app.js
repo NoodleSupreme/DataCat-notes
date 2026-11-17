@@ -47,11 +47,11 @@ balatro = [
   { name: "Cryptid", type: "Spectral", img: "Cryptid.jpg", cost: 3 },
 ];
 
-// function addtocart(selecteditem) {
-//   cart.push(selecteditem);
-//   console.log(cart);
-// }
-// addtocart("Blueprint");
+function addtocart(selecteditem) {
+  cart.push(selecteditem);
+  console.log(cart);
+}
+addtocart("Blueprint");
 
 function inject() {
   const container = document.querySelector(".container");
@@ -62,6 +62,7 @@ function inject() {
         <h2 class="card-header">${balatro.name}</h2>
          <p class="cost">$${balatro.cost}</p>
         <img src="${balatro.img}" style="width: 50%; height: auto;" alt="buffoon">
+        <button class="buybtn" onclick="addtocart(${balatro.name}  )">Buy</button>
       </div> `,
     );
   });
@@ -75,3 +76,7 @@ buttons.forEach((button) =>
   }),
 );
 */
+        <button class="buybtn" onclick="addtocart(${balatro.name}  )">Buy</button>
+
+
+      &&&&&&&&&&&&&&
