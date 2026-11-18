@@ -51,7 +51,6 @@ function addtocart(selecteditem) {
   cart.push(selecteditem);
   console.log(cart);
 }
-addtocart("Blueprint");
 
 function inject() {
   const container = document.querySelector(".container");
@@ -62,12 +61,16 @@ function inject() {
         <h2 class="card-header">${balatro.name}</h2>
          <p class="cost">$${balatro.cost}</p>
         <img src="${balatro.img}" style="width: 50%; height: auto;" alt="buffoon">
-        <button class="buybtn" onclick="addtocart(${balatro.name}  )">Buy</button>
+        <button class="buybtn" onclick="addtocart('${balatro.name}')">Buy</button>
       </div> `,
+      `<div>
+        <p>Shoopy</p>
+      </div>`,
     );
   });
 }
 inject();
+console.log(cart);
 /*
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) =>
@@ -76,7 +79,3 @@ buttons.forEach((button) =>
   }),
 );
 */
-        <button class="buybtn" onclick="addtocart(${balatro.name}  )">Buy</button>
-
-
-      &&&&&&&&&&&&&&
