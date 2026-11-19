@@ -29,3 +29,14 @@
   object-fit: contain;
   padding-bottom: 1rem;
 }
+
+.checkout {
+  display: flex;
+  align-items: center;
+  background-color: rgb(26, 192, 156);
+  width: 50rem;
+  min-height: 10rem;
+  text-align: center;
+  margin: 1rem;
+  padding: 2rem;
+}

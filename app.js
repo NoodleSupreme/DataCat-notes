@@ -47,11 +47,6 @@ balatro = [
   { name: "Cryptid", type: "Spectral", img: "Cryptid.jpg", cost: 3 },
 ];
 
-function addtocart(selecteditem) {
-  cart.push(selecteditem);
-  console.log(cart);
-}
-
 function inject() {
   const container = document.querySelector(".container");
   balatro.forEach((balatro) => {
@@ -63,16 +58,32 @@ function inject() {
         <img src="${balatro.img}" style="width: 50%; height: auto;" alt="buffoon">
         <button class="buybtn" onclick="addtocart('${balatro.name}')">Buy</button>
       </div> `,
-      `<div>
-        <p>Shoopy</p>
-      </div>`,
     );
   });
 }
-inject();
+
 console.log(cart);
-/*
-const buttons = document.querySelectorAll("button");
+function injectcheckout() {
+  const container = document.querySelector(".container");
+  container.insertAdjacentHTML(
+    "beforeend",
+    `<div class="checkout">
+  <h2 class="checkouttext">CHECKOUT</h2>
+  </div>`,
+  );
+}
+
+function addtocart(item) {
+  const shoppingcart = document.querySelector(".container");
+  item.addEventListener("click", function (event) {
+    console.log(event.target.closest(".card"));
+  });
+}
+addtocart();
+inject();
+injectcheckout();
+
+/*const buttons = document.querySelectorAll("button");
 buttons.forEach((button) =>
   button.addEventListener("click", function (event) {
     console.log(event.target.closest(".card").getAttribute("data-item"));
