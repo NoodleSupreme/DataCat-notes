@@ -32,11 +32,35 @@
 
 .checkout {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
   background-color: rgb(26, 192, 156);
-  width: 50rem;
+  width: min(50rem, calc(100% - 4rem));
   min-height: 10rem;
-  text-align: center;
   margin: 1rem;
   padding: 2rem;
+}
+
+.checkouttext,
+.cart-total {
+  margin: 0 0 1rem;
+}
+
+.cart-items {
+  width: 100%;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.cart-item span {
+  flex: 1;
+}
+
+.cart-item button {
+  min-width: 2rem;
 }
