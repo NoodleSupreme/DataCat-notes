@@ -28,11 +28,36 @@ const balatro = [
   { name: "Cryptid", type: "Spectral", img: "Cryptid.jpg", cost: 3 },
 ];
 
-const container = document.querySelector(".container");
+const itemfilters = [
+  { label: "All items", matches: () => true },
+  { label: "Jokers", matches: (item) => item.type === "Joker" },
+  { label: "Tarot", matches: (item) => item.type === "Tarot" },
+  { label: "Planets", matches: (item) => item.type === "Planet" },
+  { label: "Spectral", matches: (item) => item.type === "Spectral" },
+];
 
-function inject() {
+const container = document.querySelector(".container");
+const itemList = document.querySelector(".item-list");
+const filterTabs = document.querySelector(".filter-tabs");
+let activeFilterIndex = 0;
+
+function filters() {
+  itemfilters.forEach((filter, index) => {
+    filterTabs.insertAdjacentHTML(
+      "beforeend",
+      `<button class="filter-tab" type="button" data-filter-index="${index}" aria-pressed="${index === activeFilterIndex}">
+        ${filter.label}
+      </button>`,
+    );
+  });
+}
+
+function Items() {
+  itemList.replaceChildren();
   balatro.forEach((item, index) => {
-    container.insertAdjacentHTML(
+    if (!itemfilters[activeFilterIndex].matches(item)) return;
+
+    itemList.insertAdjacentHTML(
       "beforeend",
       `<div class="card">
         <h2 class="card-header">${item.name}</h2>
@@ -114,7 +139,7 @@ function renderCart() {
     const increaseButton = document.createElement("button");
     increaseButton.type = "button";
     increaseButton.textContent = "+";
-    increaseButton.setAttribute("aria-label", `Add one ${item.name}`);
+
     increaseButton.addEventListener("click", () =>
       updateQuantity(item.name, 1),
     );
@@ -124,8 +149,19 @@ function renderCart() {
   });
 }
 
-inject();
+filters();
+Items();
 injectcheckout();
+filterTabs.addEventListener("click", (event) => {
+  const button = event.target.closest(".filter-tab");
+  if (!button) return;
+
+  activeFilterIndex = Number(button.dataset.filterIndex);
+  filterTabs.querySelectorAll(".filter-tab").forEach((tab, index) => {
+    tab.setAttribute("aria-pressed", String(index === activeFilterIndex));
+  });
+  Items();
+});
 container.addEventListener("click", (event) => {
   const button = event.target.closest(".buybtn");
   if (button) addtocart(Number(button.dataset.itemIndex));
