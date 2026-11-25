@@ -72,9 +72,9 @@ function Items() {
 function injectcheckout() {
   container.insertAdjacentHTML(
     "beforeend",
-    `<section class="checkout" aria-labelledby="checkout-heading">
+    `<section class="checkout" >
       <h2 class="checkouttext" id="checkout-heading">Cart (<span class="cart-count">0</span>)</h2>
-      <div class="cart-items" aria-live="polite"></div>
+      <div class="cart-items" ></div>
       <p class="cart-total">Total: $<span>0</span></p>
     </section>`,
   );
@@ -90,7 +90,7 @@ function addtocart(index) {
     cart.push({ ...item, quantity: 1 });
   }
 
-  renderCart();
+  showcart();
 }
 
 function updateQuantity(name, change) {
@@ -102,10 +102,10 @@ function updateQuantity(name, change) {
     cart.splice(cart.indexOf(cartItem), 1);
   }
 
-  renderCart();
+  showcart();
 }
 
-function renderCart() {
+function showcart() {
   const cartItems = document.querySelector(".cart-items");
   const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
   const total = cart.reduce((sum, item) => sum + item.cost * item.quantity, 0);
@@ -166,4 +166,4 @@ container.addEventListener("click", (event) => {
   const button = event.target.closest(".buybtn");
   if (button) addtocart(Number(button.dataset.itemIndex));
 });
-renderCart();
+showcart();

@@ -1,3 +1,9 @@
+.vt323-regular {
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .filter-tabs {
   display: flex;
   justify-content: center;
@@ -48,7 +54,7 @@
   align-items: flex-start;
   flex-direction: column;
   background-color: rgb(26, 192, 156);
-  width: min(50rem, calc(100% - 4rem));
+  width: 50rem;
   min-height: 10rem;
   margin: 1rem;
   padding: 2rem;
